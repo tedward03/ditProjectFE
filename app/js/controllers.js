@@ -1,0 +1,74 @@
+/*angular.module('myApp.genericpages', ['ngRoute'])
+.config(function($routeProvider) {
+        $routeProvider
+
+            // route for the home page
+            .when('/home', {
+                templateUrl : 'pages/home.html',
+                controller  : 'mainController'
+            })
+
+            // route for the about page
+            .when('/about', {
+                templateUrl : 'pages/about.html',
+                controller  : 'aboutController'
+            })
+
+            // route for the contact page
+            .when('/contact', {
+                templateUrl : 'pages/contact.html',
+                controller  : 'contactController'
+            });
+    });
+
+    // create the controller and inject Angular's $scope
+    scotchApp.controller('mainController', function($scope) {
+        // create a message to display in our view
+        $scope.message = 'Everyone come and see how good I look!';
+    });
+
+    scotchApp.controller('aboutController', function($scope) {
+        $scope.message = 'Look! I am an about page.';
+    });
+
+    scotchApp.controller('contactController', function($scope) {
+        $scope.message = 'Contact us! JK. This is just a demo.';
+    });*/
+var logout = angular.module('myApp.logout', ['ngRoute']);
+var about = angular.module('myApp.About', ['ngRoute']);
+var contact = angular.module('myApp.Contact', ['ngRoute']);
+
+logout.config(['$routeProvider', function($routeProvider) {
+  $routeProvider.when('/logout', {
+    templateUrl: 'partials/logout.html',
+    controller: 'logoutCtrl'
+  });
+}]);
+
+about.config(['$routeProvider', function($routeProvider) {
+  $routeProvider.when('/about', {
+    templateUrl: 'partials/about.html',
+    controller: 'aboutCtrl'
+  });
+}]);
+
+
+contact.config(['$routeProvider', function($routeProvider) {
+  $routeProvider.when('/contact', {
+    templateUrl: 'partials/contact.html',
+    controller: 'contactCtrl'
+  });
+}]);
+
+
+about.controller('aboutCtrl', function($scope) {
+    $scope.message = 'this is the about page';
+});
+
+contact.controller('contactCtrl', function($scope) {
+    $scope.message = 'this is the contact page';
+});
+
+logout.controller('logoutCtrl', function($scope) {
+    $scope.message = 'this is the logout page incase you didnt realize';
+});
