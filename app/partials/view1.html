@@ -1,2 +1,14 @@
 <p>This is the lecturer view for the webapp</p>
+<div ng-controller="UserCtrl">
+	<table ng-table class="table">
+		<tr ng-repeat="user in users">
 
+			<td data-title="'Id'">{{user.id}}</td>
+			<td data-title="'Name'">{{user.fname}}</td>
+			<td data-title="'Surname'">{{user.lname}}</td>
+			<td data-title="'Email'">{{user.email}}</td>
+			<td data-title="'Username'">{{user.username}}</td>
+			<td data-title="'Role'">{{user.userrole}}</td>
+		</tr>
+	</table>
+</div>

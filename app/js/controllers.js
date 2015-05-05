@@ -37,6 +37,8 @@
 var logout = angular.module('myApp.logout', ['ngRoute']);
 var about = angular.module('myApp.About', ['ngRoute']);
 var contact = angular.module('myApp.Contact', ['ngRoute']);
+var usertable = angular.module('myApp.user.table', ['ngTable']);
+
 
 logout.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/logout', {
@@ -71,4 +73,12 @@ contact.controller('contactCtrl', function($scope) {
 
 logout.controller('logoutCtrl', function($scope) {
     $scope.message = 'this is the logout page incase you didnt realize';
+});
+
+
+//TODO stop static  url for this, json is http://localhost:8080/BackendDITproj/webresources/user
+usertable.controller('UserCtrl' ,function($scope, $http){
+     $http.get('resources/users.json').success(function(data) {
+    $scope.users = data;
+  });
 });
