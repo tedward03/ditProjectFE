@@ -38,6 +38,10 @@ var logout = angular.module('myApp.logout', ['ngRoute']);
 var about = angular.module('myApp.About', ['ngRoute']);
 var contact = angular.module('myApp.Contact', ['ngRoute']);
 var usertable = angular.module('myApp.user.table', ['ngTable']);
+var httpget  = angular.module('ionicApp', []);
+var regular = angular.module("regularservice", []);
+
+
 
 
 logout.config(['$routeProvider', function($routeProvider) {
@@ -78,7 +82,25 @@ logout.controller('logoutCtrl', function($scope) {
 
 //TODO stop static  url for this, json is http://localhost:8080/BackendDITproj/webresources/user
 usertable.controller('UserCtrl' ,function($scope, $http){
-     $http.get('resources/users.json').success(function(data) {
-    $scope.users = data;
+  $scope.users = [];
+     $http.get('resources/users.json')
+
+     .success(function(data) {$scope.users = data;})
+     .error(function(data) {console.log('Error '+data);
+             });
+});
+
+
+
+
+
+
+
+var restServices = angular.module('restServices', ['ngResource']);
+
+
+restServices.controller('resourceCtrl', function ($scope, $http) {
+  $http.get('resources/time.json').success(function(data) {
+    $scope.resource = data;
   });
 });

@@ -12,6 +12,24 @@ view1.config(['$routeProvider', function($routeProvider) {
 view1.controller('View1Ctrl', [function() {
 
 }]);
+
+view1.controller('middlebodyCTRL', function(){
+	this.tab = 1;
+	this.selectTab = function(setTab){
+		this.tab = setTab;
+	};
+	this.isSelected = function(checkTab){
+		return this.tab === checkTab;
+
+	}
+
+});
+
+
+
+
+
+
 /*
 var restCtrl =  angular.module('restCtrl', []);
 restCtrl.controller('UserCtrl', ['$scope', 'User',
